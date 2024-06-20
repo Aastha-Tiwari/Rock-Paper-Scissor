@@ -2,10 +2,18 @@ const choicesContainer = document.querySelector(".choices");
 const choices = document.querySelectorAll(".choice");
 const resultContainer = document.querySelector(".result-msg-container");
 const movesContainer = document.querySelector(".moves-container");
+const scoreBoard = document.querySelector(".score-board");
+const resetBtn = document.querySelector(".reset button");
 
 let userMove = "";
 let computerMove = "";
 let result = "";
+
+const score = {
+    Wins : 0 ,
+    Loss : 0 , 
+    Draw : 0
+}
 
 choicesContainer.addEventListener("click",(e)=>{
     if(e.target != choicesContainer){
@@ -68,4 +76,27 @@ function checkWinning(userMove , computerMove){
 function showResult(userMove , computerMove , result){
     resultContainer.innerText = result;
     movesContainer.innerHTML = `You picked <img src="./assets/${userMove}-emoji.png" alt="${userMove}"/> Computer picked <img src="./assets/${computerMove}-emoji.png" alt="${computerMove}"/>`;
+    updateScore(result);
 }
+
+function updateScore(){
+    if(result == "Win"){
+        (score.Wins)++;
+    }
+    else if(result == "Loss"){
+        (score.Loss)++;
+    }
+    else if(result == "Tie"){
+        (score.Draw)++;
+    }
+    scoreBoard.innerText = `Wins:${score.Wins} Loss:${score.Loss} Draw:${score.Draw}`;
+}
+
+resetBtn.addEventListener("click",()=>{
+    userMove = computerMove = result = "";
+    score.Wins = score.Loss = score.Draw = 0;
+    resultContainer.innerText = "";
+    movesContainer.innerHTML = "";
+    scoreBoard.innerText = "";
+});
+
