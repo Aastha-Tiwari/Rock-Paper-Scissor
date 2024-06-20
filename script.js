@@ -38,38 +38,17 @@ function findComputerMove(){
 }
 
 function checkWinning(userMove , computerMove){
+    if(userMove == computerMove){
+        return "Tie";
+    }
     if(userMove == "rock"){
-        if(computerMove == "rock"){
-            return "Tie";
-        }
-        else if(computerMove == "paper"){
-            return "Loss";
-        }
-        else{
-            return "Win";
-        }
+        return computerMove == "paper" ? "Loss" : "Win";
     }
     else if(userMove == "paper"){
-        if(computerMove == "paper"){
-            return "Tie";
-        }
-        else if(computerMove == "scissor"){
-            return "Loss";
-        }
-        else{
-            return "Win";
-        }
+        return computerMove == "scissor" ? "Loss" : "Win";
     }
     else if(userMove == "scissor"){
-        if(computerMove == "scissor"){
-            return "Tie";
-        }
-        else if(computerMove == "rock"){
-            return "Loss";
-        }
-        else{
-            return "Win";
-        }
+        return computerMove == "rock" ? "Loss" : "Win";
     }
 }
 
@@ -82,12 +61,15 @@ function showResult(userMove , computerMove , result){
 function updateScore(){
     if(result == "Win"){
         (score.Wins)++;
+        resultContainer.style.backgroundColor = "green";
     }
     else if(result == "Loss"){
         (score.Loss)++;
+        resultContainer.style.backgroundColor = "red";
     }
     else if(result == "Tie"){
         (score.Draw)++;
+        resultContainer.style.backgroundColor = "";
     }
     scoreBoard.innerText = `Wins:${score.Wins} Loss:${score.Loss} Draw:${score.Draw}`;
 }
@@ -98,5 +80,6 @@ resetBtn.addEventListener("click",()=>{
     resultContainer.innerText = "";
     movesContainer.innerHTML = "";
     scoreBoard.innerText = "";
+    resultContainer.style.backgroundColor = "";
 });
 
