@@ -45,8 +45,45 @@ h1{
 }
 .reset button{
     margin-top:1.8vw;
-    padding:1vw;
-    border-radius:1vw;
+    padding:1.3vw 2vw;
+    border-radius:1.6vw;
+}
+
+@media screen and (max-width:800px){
+    h1{
+        margin-block : 7vh;
+    }
+    .choice{
+        height:20vw;
+        width:20vw;
+    }
+    .choices{
+        gap:2vw;
+    }
+    .reset button{
+        padding:4vw;
+        border-radius:3vw;
+    }
+    .result-msg-container{
+        margin-block:5vh;
+        font-size:2rem;
+    }
+    .moves-container{
+        font-size:1.5rem;
+    }
+    .score-board{
+        margin-block:5vh;
+    }
+}
+
+@media screen and (max-width:600px){
+    .choice{
+        height:30vw;
+        width:30vw;
+    }
+    .moves-container{
+        font-size:1rem;
+    }
 }
 
 
